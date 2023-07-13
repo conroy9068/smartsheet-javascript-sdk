@@ -31,8 +31,11 @@
   "homepage": "http://developers.smartsheet.com",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.3.1",
     "extend": "^3.0.2",
     "request": "^2.88.0",
+    "smartsheet": "^3.1.2",
     "underscore": "^1.8.2",
     "winston": "^2.3.1"
   },
