@@ -10,7 +10,7 @@ var options = {
 
 var client = smartsheet.createClient(options);
 
-var reportId = 4683507825594244;
+var reportId = 2424102226028420;
 
 client.reports.getReportAsCSV({id: reportId})
     .then(function(csvData) {
@@ -25,11 +25,14 @@ client.reports.getReportAsCSV({id: reportId})
             .pipe(csv({
                 mapHeaders: ({ header }) => header.toLowerCase().replace(/\s/g, '_') // changes "Job Reference" to "job_reference", "Sheet Name" to "sheet_name", etc.
             }))
-            .on('data', (data) => results.push(data))
+            .on('data', (data) => {
+                if (data.project_type === 'Private') {  // Add this condition
+                    results.push(data);
+                }
+            })
             .on('end', () => {
                 console.log(results);
             });
-
         });
     })
     .catch(function(error) {
