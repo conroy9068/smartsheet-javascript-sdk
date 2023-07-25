@@ -26,7 +26,7 @@ client.reports.getReportAsCSV({id: reportId})
                 mapHeaders: ({ header }) => header.toLowerCase().replace(/\s/g, '_') // changes "Job Reference" to "job_reference", "Sheet Name" to "sheet_name", etc.
             }))
             .on('data', (data) => {
-                if (data.project_type === 'Private') {  // Add this condition
+                if (data.project_type === 'Private') {
                     results.push(data);
                 }
             })
